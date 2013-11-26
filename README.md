@@ -6,6 +6,7 @@ Max Isacson
 
 TODO
 ----
+- Come up with a better name
 - Make the code prettier and cleaner, there are a lot of hacks in it
 - Fix hyphenation
 - A whole lot more probably
