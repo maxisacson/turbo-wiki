@@ -14,8 +14,8 @@ import re
 locale.setlocale(locale.LC_ALL,'')
 
 def wiki(window):
-	eng = 4357338.
-	swe = 1595278.
+	eng = 4497604.
+	swe = 1616898.
 	norm = eng + swe
 	swe_w = swe/norm;
 
@@ -44,6 +44,8 @@ def wiki(window):
 
 		try:
 			output = soup.title.get_text() + "\n" + (w/2)*"-" + "\n"
+			if 'Inga underarter finns listade' in soup.get_text():
+				continue
 			window.addstr(0,0,output.encode("utf-8"), curses.A_BOLD);
 			pars = soup.find('div', id="mw-content-text").find_all(\
 				['p','h2','h3', 'h4', 'h5', 'li'])
@@ -58,7 +60,7 @@ def wiki(window):
 						and not s.find(text=re.compile(\
 						r"^(Inneh.ll|Contents)$"\
 						)):
-							output = "\n--"+s.get_text()+"--"
+							output = "\n-- "+s.get_text()+" --"
 							output = re.sub(\
 								r"\[(edit|redigera\ \|\ redigera\ wikitext)\]","",output)
 							window.addstr(output.encode("utf-8"), curses.A_BOLD)
