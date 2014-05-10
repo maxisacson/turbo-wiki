@@ -18,7 +18,7 @@ def wiki(window):
 	swe = 1616898.
 	norm = eng + swe
 	swe_w = swe/norm;
-
+	keywords = ['Inga underarter finns listade', 'may refer to', 'kan syfta på']
 	cont = r"^(div|span)$"
 	this_breaks = r"^(Other_projects|References|See_also|catlinks|Further_reading|External_links)$"
 	this_skips = r"^(Other_projects|References|Referenser|K\.C3\.A4llor|Externa_l\.C3\.A4nkar|Se_\.C3\.A4ven|See_also|catlinks|Further_reading|External_links|External_websites|toc|toctitle)$"
@@ -44,8 +44,7 @@ def wiki(window):
 
 		try:
 			output = soup.title.get_text() + "\n" + (w/2)*"-" + "\n"
-			if ('Inga underarter finns listade' in soup.get_text() or 'may refer to' in soup.get_text() \
-				or 'kan syfta på' in soup.get_text()):
+			if (k in soup.get_text() for k in keywords):
 				continue
 			window.addstr(0,0,output.encode("utf-8"), curses.A_BOLD);
 			pars = soup.find('div', id="mw-content-text").find_all(\
