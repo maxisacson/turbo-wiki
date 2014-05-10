@@ -44,7 +44,8 @@ def wiki(window):
 
 		try:
 			output = soup.title.get_text() + "\n" + (w/2)*"-" + "\n"
-			if 'Inga underarter finns listade' in soup.get_text():
+			if ('Inga underarter finns listade' in soup.get_text() or 'may refer to' in soup.get_text() \
+				or 'kan syfta på' in soup.get_text()):
 				continue
 			window.addstr(0,0,output.encode("utf-8"), curses.A_BOLD);
 			pars = soup.find('div', id="mw-content-text").find_all(\
