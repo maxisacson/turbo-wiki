@@ -44,7 +44,7 @@ def wiki(window):
 
 		try:
 			output = soup.title.get_text() + "\n" + (w/2)*"-" + "\n"
-			if (k in soup.get_text() for k in keywords):
+			if (any(k in soup.get_text().encode("utf-8") for k in keywords)):
 				continue
 			window.addstr(0,0,output.encode("utf-8"), curses.A_BOLD);
 			pars = soup.find('div', id="mw-content-text").find_all(\
