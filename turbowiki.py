@@ -18,7 +18,7 @@ def wiki(window):
 	swe = 1616898.
 	norm = eng + swe
 	swe_w = swe/norm;
-	keywords = ['Inga underarter finns listade', 'may refer to', 'kan syfta på']
+	keywords = ['Inga underarter finns listade', 'may refer to', 'kan syfta på', "may also refer to"]
 	cont = r"^(div|span)$"
 	this_breaks = r"^(Other_projects|References|See_also|catlinks|Further_reading|External_links)$"
 	this_skips = r"^(Other_projects|References|Referenser|K\.C3\.A4llor|Externa_l\.C3\.A4nkar|Se_\.C3\.A4ven|See_also|catlinks|Further_reading|External_links|External_websites|toc|toctitle)$"
