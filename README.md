@@ -1,6 +1,6 @@
 Turbo-Wiki
 ==========
-A small of python code to randomize through wikipedia articles and display them on-screen using curses. Rock on.
+A small piece of python code to randomize through wikipedia articles and display them on-screen using curses. Rock on.
 
 Max Isacson
 
