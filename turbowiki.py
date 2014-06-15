@@ -107,7 +107,7 @@ def wiki(window):
 			c = (switch_at - m*60 - s)
 			time.sleep(c)
 		except curses.error:
-			continue
+			pass
 
 curses.initscr()
 curses.curs_set(0)
