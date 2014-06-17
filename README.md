@@ -4,6 +4,10 @@ A small piece of python code to randomize through wikipedia articles and display
 
 Max Isacson
 
+Dependencies
+------------
+- [Beautifulsoup](http://www.crummy.com/software/BeautifulSoup/)
+
 TODO
 ----
 - Come up with a better name
