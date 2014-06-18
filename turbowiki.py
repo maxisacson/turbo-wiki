@@ -21,8 +21,8 @@ def wiki(window):
 	swe = 1616898.
 	norm = eng + swe
 	swe_w = swe/norm
-	keywords = [u'Inga underarter finns listade', u'may refer to', u'kan syfta på', u'may also refer to']
-	title_keywords = [u'disambiguation']
+	keywords = ['Inga underarter finns listade', 'may refer to', 'kan syfta på', 'may also refer to']
+	title_keywords = ['disambiguation']
 	cont = r"^(div|span)$"
 	this_breaks = r"^(Other_projects|References|See_also|catlinks|Further_reading|External_links)$"
 	this_skips = r"^(Other_projects|References|Referenser|K\.C3\.A4llor|Externa_l\.C3\.A4nkar|Se_\.C3\.A4ven|See_also|catlinks|Further_reading|External_links|External_websites|toc|toctitle)$"
@@ -54,7 +54,7 @@ def wiki(window):
 				(any(k in soup.title.get_text() for \
 				k in title_keywords)):
 				continue
-			window.addstr(0, 0, output.encode('utf-8'), curses.A_BOLD)
+			window.addstr(0, 0, output, curses.A_BOLD)
 			pars = soup.find('div', id="mw-content-text").find_all(
 							['p', 'h2', 'h3', 'h4', 'h5', 'li'])
 			for s in pars:
@@ -71,23 +71,23 @@ def wiki(window):
 							output = "\n-- "+s.get_text()+" --"
 							output = re.sub(
 								r"\[(edit|redigera\ \|\ redigera\ wikitext)\]", "", output)
-							window.addstr(output.encode("utf-8"), curses.A_BOLD)
+							window.addstr(output, curses.A_BOLD)
 					elif s.find('h3') \
 						and not s.find('span', id=re.compile(this_skips)) \
 						and not s.find('div', id=re.compile(this_skips)):
 							output = "\n"+s.get_text()
 							output = re.sub(r"\[edit\]", "", output)
-							window.addstr(output.encode("utf-8"), curses.A_BOLD)
+							window.addstr(output, curses.A_BOLD)
 					elif s.find('p'):
 						output = "\n"+s.get_text()+"\n"
-						window.addstr(output.encode("utf-8"))
+						window.addstr(output)
 					elif s.find('li') \
 						and not s.find('li', id=re.compile(r"^(cite)"))\
 						and not s.find('li', attrs={"class": "external text"})\
 						and not s.find('li', attrs={"class": re.compile(r"^(toc)")})\
 						and not re.compile(r"^(v|t|e)$").search(s.li.get_text()):
 							output = "\n\t** "+s.li.get_text()
-							window.addstr(output.encode("utf-8"))
+							window.addstr(output)
 					else:
 						continue
 			[ypos, xpos] = window.getyx()
